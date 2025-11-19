@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blackjack Game</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <style>
+        body { background: #111; color: white; }
+        .card-box { padding: 10px; border: 1px solid #555; margin: 5px; display: inline-block; }
+    </style>
+</head>
+<body>
+
+<div class="container text-center mt-4">
+    <h2>Simple Blackjack</h2>
+
+    <h4>Dealer</h4>
+    <div id="dealer"></div>
+
+    <h4 class="mt-4">Player</h4>
+    <div id="player"></div>
+
+    <h3 id="result" class="mt-4"></h3>
+
+    <button class="btn btn-success mt-3" onclick="hit()">Hit</button>
+    <button class="btn btn-warning mt-3" onclick="stand()">Stand</button>
+    <button class="btn btn-light mt-3" onclick="startGame()">New Game</button>
+</div>
+
+<script>
+let playerCards = [];
+let dealerCards = [];
+
+function getCard() {
+    return Math.floor(Math.random() * 10) + 1; // 1-10
+}
+
+function startGame() {
+    playerCards = [getCard(), getCard()];
+    dealerCards = [getCard()];
+    document.getElementById('result').innerText = "";
+    updateDisplay();
+}
+
+function updateDisplay() {
+    document.getElementById('player').innerText = "Cards: " + playerCards.join(", ") +
+        " | Total = " + total(playerCards);
+
+    document.getElementById('dealer').innerText = "Cards: " + dealerCards.join(", ") +
+        " | Total = " + total(dealerCards);
+}
+
+function total(cards) {
+    return cards.reduce((a,b)=>a+b,0);
+}
+
+function hit() {
+    playerCards.push(getCard());
+    updateDisplay();
+
+    if (total(playerCards) > 21) {
+        document.getElementById('result').innerText = "You Busted!";
+    }
+}
+
+function stand() {
+    while (total(dealerCards) < 17) {
+        dealerCards.push(getCard());
+    }
+    updateDisplay();
+
+    let p = total(playerCards);
+    let d = total(dealerCards);
+
+    if (p > 21) result = "You Lose!";
+    else if (d > 21) result = "Dealer Bust! You Win!";
+    else if (p > d) result = "You Win!";
+    else if (p < d) result = "You Lose!";
+    else result = "It's a Tie!";
+
+    document.getElementById('result').innerText = result;
+}
+
+startGame();
+</script>
+
+</body>
+</html>

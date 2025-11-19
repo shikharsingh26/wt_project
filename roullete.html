@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roulette Game</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
+    <style>
+        body {
+            background: #111;
+            color: white;
+            padding-top: 40px;
+        }
+        .wheel {
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            border: 10px solid gold;
+            margin: 30px auto;
+            transition: transform 3s ease-out;
+            background: conic-gradient(
+                red 0deg 18deg,
+                black 18deg 36deg,
+                red 36deg 54deg,
+                black 54deg 72deg,
+                red 72deg 90deg,
+                black 90deg 108deg,
+                red 108deg 126deg,
+                black 126deg 144deg,
+                red 144deg 162deg,
+                black 162deg 180deg,
+                red 180deg 198deg,
+                black 198deg 216deg,
+                red 216deg 234deg,
+                black 234deg 252deg,
+                red 252deg 270deg,
+                black 270deg 288deg,
+                red 288deg 306deg,
+                black 306deg 324deg,
+                green 324deg 360deg
+            );
+        }
+        .pointer {
+            width: 0; 
+            height: 0; 
+            border-left: 18px solid transparent;
+            border-right: 18px solid transparent;
+            border-bottom: 30px solid yellow;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container text-center">
+    
+    <h1 class="mb-4"> Simple Roulette Game</h1>
+    <p>Enter a number from <strong>0 to 18</strong> and spin the wheel!</p>
+
+    <div class="pointer"></div>
+    <div id="wheel" class="wheel"></div>
+
+    <div class="mt-4">
+        <input type="number" id="betInput" class="form-control w-50 mx-auto" placeholder="Enter your bet (0 – 18)">
+        <button class="btn btn-success mt-3 px-4" onclick="spinWheel()">SPIN</button>
+    </div>
+
+    <h3 id="result" class="mt-4"></h3>
+
+</div>
+
+<script>
+function spinWheel() {
+    let userBet = document.getElementById("betInput").value;
+
+    if (userBet === "") {
+        alert("Please enter a bet number.");
+        return;
+    }
+    if (userBet < 0 || userBet > 18) {
+        alert("Number must be between 0 and 18.");
+        return;
+    }
+
+    // Random result from 0–18
+    let result = Math.floor(Math.random() * 19);
+
+    // Spin animation
+    let randomRotate = 720 + (result * 20);  
+    document.getElementById("wheel").style.transform = `rotate(${randomRotate}deg)`;
+
+    // Show result after animation
+    setTimeout(() => {
+        if (parseInt(userBet) === result) {
+            document.getElementById("result").innerHTML = 
+                ` <strong>You WIN!</strong> Wheel landed on <span style="color:yellow">${result}</span>`;
+        } else {
+            document.getElementById("result").innerHTML = 
+                `❌ You lost. Wheel landed on <span style="color:yellow">${result}</span>`;
+        }
+    }, 3000);
+}
+</script>
+
+</body>
+</html>
