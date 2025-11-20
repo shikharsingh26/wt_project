@@ -8,32 +8,42 @@
             font-family: Arial, sans-serif;
             text-align: center;
             padding: 20px;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         h1 {
             color: #333;
+            margin-top: 40px;
         }
 
         p {
             font-size: 16px;
         }
 
+        /* BUTTON STYLING */
         a {
             text-decoration: none;
             color: white;
             background-color: lightblue;
-            padding: 10px 15px;
+            padding: 20px 30px;         /* bigger buttons */
             display: inline-block;
-            margin: 10px;
-            border-radius: 5px;
+            margin: 15px;               /* space between buttons */
+            border-radius: 8px;
+            font-size: 20px;             /* bigger text */
+            width: 250px;                /* same width for all buttons */
         }
 
         a:hover {
             background-color: skyblue;
         }
 
+        /* BUTTON SECTION FIXED AT BOTTOM */
         .container {
-            margin-top: 30px;
+            margin-top: auto;
+            padding-bottom: 40px;
         }
     </style>
 
@@ -44,9 +54,9 @@
     <p>This website contains simple and fun games made using HTML, CSS, and JavaScript.</p>
     
     <div class="container">
-        <a href="about.html">About</a>
-        <a href="features.html">Features</a>
-        <a href="game.html">Play Games</a>
+        <a href="about.html">About</a><br>
+        <a href="features.html">Features</a><br>
+        <a href="game.html">Play Games</a><br>
         <a href="contact.html">Contact</a>
     </div>
 
