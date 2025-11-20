@@ -12,38 +12,42 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            background-color: #4A0000; /* dark red */
+            color: white; /* text becomes readable */
         }
 
         h1 {
-            color: #333;
             margin-top: 40px;
+            font-size: 40px;
         }
 
         p {
-            font-size: 16px;
+            font-size: 20px;
         }
 
-        /* BUTTON STYLING */
+        /* EXTRA LARGE BUTTONS WITH DARK RED THEME */
         a {
             text-decoration: none;
             color: white;
-            background-color: lightblue;
-            padding: 20px 30px;         /* bigger buttons */
+            background-color: #990000;     /* dark red button */
+            padding: 30px 40px;           /* XL size */
             display: inline-block;
-            margin: 15px;               /* space between buttons */
-            border-radius: 8px;
-            font-size: 20px;             /* bigger text */
-            width: 250px;                /* same width for all buttons */
+            margin: 20px;
+            border-radius: 10px;
+            font-size: 26px;
+            font-weight: bold;
+            width: 300px;
+            border: 2px solid #FF4444;    /* brighter red border */
         }
 
         a:hover {
-            background-color: skyblue;
+            background-color: #CC0000;    /* lighter red on hover */
         }
 
-        /* BUTTON SECTION FIXED AT BOTTOM */
+        /* Bottom section */
         .container {
             margin-top: auto;
-            padding-bottom: 40px;
+            padding-bottom: 60px;
         }
     </style>
 
